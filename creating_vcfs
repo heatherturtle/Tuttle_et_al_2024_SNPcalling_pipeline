@@ -63,5 +63,16 @@ module load bcftools
 module load vcftools
 vcftools --vcf mpile_diptet_variants.vcf --out filtered_diptet_variants --not-chr chr00 --not-chr ChrUn --min-alleles 2 --max-alleles 2 --max-missing 0.6 --minQ 30 --minGQ 60 --minDP 5 --maf 0.02 --remove-filtered-all --recode --recode-INFO-all
 
-#variant files to be passed to polyrad for genotyping with uncertainty
+#Using GATK to select variants
+module load gatk/4.1.2
+
+#gatk IndexFeatureFile -F filtered_diptet_variants.recode.vcf                                                                                                                                                                                                                 
+
+gatk SelectVariants -R potato_dm_v404_all_pm_un.fasta -V filtered_diptet_variants.recode.vcf  -O filtered_diptet_variants_selected.recode.vcf -XL ChrUn -XL chr00 --exclude-filtered true --restrict-alleles-to BIALLELIC  --exclude-\
+non-variants true --select-type-to-include SNP --set-filtered-gt-to-nocall true
+
+
+
+
+#variant files to be passed to polyrad for genotyping with uncertainty!
 
