@@ -4,4 +4,4 @@ In this repository is the code for for the SNP calling pipeline starting at QC t
 This will be a general outline of parameters used, but these parameters change depending on the dataset (diploid, tetraploid or combined)
 used.
 
-Please refer to the paper for the parameters used in each dataset. 
+Please see creating vcfs for the parameters used to create each vcf. 
